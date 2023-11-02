@@ -1,3 +1,5 @@
+import { display } from "./main";
+
 export function prepareFormContainer(){
     const form = document.createElement('form');
     form.classList.add('col-3', 'mx-auto');
@@ -158,3 +160,36 @@ export function prepareFormNote(){
 
     return noteDiv;
 }
+
+export function prepareFormTodoParent(){
+    
+    const todoParentDiv = prepareFormDiv();
+    todoParentDiv.classList.add('select');
+
+    const todoParentSelect = document.createElement('select');
+     
+    todoParentSelect.classList.add('form-select');
+    todoParentSelect.ariaLabel = 'Default select example';
+
+    todoParentDiv.appendChild(createTodoParentSelect(todoParentSelect));
+
+    return todoParentDiv;
+}
+
+function createTodoParentSelect(todoParentSelect){
+    const optionDefault = document.createElement('option');
+    optionDefault.selected = true;
+    optionDefault.disabled = true;
+    optionDefault.innerText = 'Related to parent...';
+    todoParentSelect.appendChild(optionDefault);
+
+    display.projects.forEach(e => {
+        const option = document.createElement('option');
+        option.value = e.id;
+        option.innerText = `${e.id} - ${e.title}`;
+
+        todoParentSelect.appendChild(option);
+    })
+    return todoParentSelect;
+}
+

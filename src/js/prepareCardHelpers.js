@@ -33,11 +33,11 @@ export function prepareNotes(obj){
     return notes;
 }
 
-export function prepareProjectParent(obj){
-    const projectParent = document.createElement('p');
-    projectParent.classList.add('card-text', 'text-info');
-    projectParent.innerText = obj.project;
-    return projectParent;
+export function prepareTodoParent(obj){
+    const todoParent = document.createElement('p');
+    todoParent.classList.add('card-text', 'text-info');
+    todoParent.innerText = `${obj.todoParentId} - ${obj.todoParentTitle}`;
+    return todoParent;
 }
 
 export function prepareChecklist(obj){

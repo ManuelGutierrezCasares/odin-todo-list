@@ -1,11 +1,11 @@
-import { prepareTitle, prepareDueDate, prepareDescription, prepareChecklist, preparePriority, prepareNotes, prepareProjectParent } from './prepareCardHelpers';
+import { prepareTitle, prepareDueDate, prepareDescription, prepareChecklist, preparePriority, prepareNotes, prepareTodoParent } from './prepareCardHelpers';
 
 export function createTodoCard(todo){
     const content = document.getElementById('content');
     const container = document.createElement('div');
     const containerBody = document.createElement('div');
 
-    container.classList.add('card', 'bg-success');
+    container.classList.add('card', `todo-${todo.id}` , 'bg-success');
     container.style = 'width: 18rem;';
     containerBody.classList.add('card-body');
 
@@ -14,7 +14,7 @@ export function createTodoCard(todo){
     containerBody.appendChild(prepareDescription(todo));
     containerBody.appendChild(preparePriority(todo));
     containerBody.appendChild(prepareNotes(todo));
-    containerBody.appendChild(prepareProjectParent(todo));
+    containerBody.appendChild(prepareTodoParent(todo));
     containerBody.appendChild(prepareChecklist(todo));
 
     container.appendChild(containerBody);

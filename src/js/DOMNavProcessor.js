@@ -1,6 +1,7 @@
 
 import { display } from './main';
-import { reloadTodos, reloadProjects, reloadAll, reloadTodoForm, reloadProjectForm } from './DOMHelpers';
+import { reloadTodos, reloadProjects, reloadAll, reloadTodoForm, reloadProjectForm, navTabSelected } from './DOMHelpers';
+import { cardAllListener, cardProjectListener, cardTodoListener } from './DOMCardProcessor';
 
 
 const showHome = document.getElementById('nav-home')
@@ -10,21 +11,31 @@ const addProject = document.getElementById('nav-add-project');
 const addTodo = document.getElementById('nav-add-todo');
 
 
-showHome.addEventListener('click', e => reloadAll(display))
+showHome.addEventListener('click', e => {
+    console.log(display);
+    navTabSelected(e);
+    reloadAll(display);
+    cardAllListener();
+})
 
 showProjects.addEventListener('click', function (e){
-    return reloadProjects(display);
+    navTabSelected(e);
+    reloadProjects(display);
+    cardProjectListener();
 })
 
 showTodos.addEventListener('click', function (e){
-    return reloadTodos(display);
+    navTabSelected(e);
+    reloadTodos(display);
+    cardTodoListener();
 })
 
 addProject.addEventListener('click', function (e){
+    navTabSelected(e);
     return reloadProjectForm(display);
 })
 
 addTodo.addEventListener('click', function (e){
+    navTabSelected(e);
     return reloadTodoForm(display);
 })
-

@@ -5,9 +5,10 @@ export function createProjectCard(project){
     const container = document.createElement('div');
     const containerBody = document.createElement('div');
 
-    container.classList.add('card');
+    container.classList.add('card', `project-${project.id}`);
     container.style = 'width: 18rem;';
     containerBody.classList.add('card-body');
+    
 
     containerBody.appendChild(prepareTitle(project));
     containerBody.appendChild(prepareDueDate(project));

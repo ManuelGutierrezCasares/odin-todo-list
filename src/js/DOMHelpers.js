@@ -1,5 +1,5 @@
 import Project from './ClassProject';
-import Todo from './ClassTodo'
+import Todo from './ClassTodo';
 import { createTodoCard } from './prepareCardTodos';
 import { createProjectCard } from './prepareCardProjects';
 import { createTodoForm } from './prepareFormTodos';
@@ -36,7 +36,6 @@ export function reloadProjectForm(display){
 
 function sendProjectForm(display){
     const form = document.getElementsByTagName('form');
-        console.log(form);
         
         //FUNCIONA PERO REFACTORIZAR PORQUE ES HORRIBLE
         let values = [];
@@ -72,8 +71,8 @@ function sendTodoForm(display){
         //FUNCIONA PERO REFACTORIZAR PORQUE ES HORRIBLE
         let values = [];
         getValues(form);
-        // Todo(title, description, dueDate, priority, notes, project = null)
-        display.addTodo(new Todo(values[0],values[1],getCustomDate(values[2]),values[3],values[4]));
+        // Todo(title, description, dueDate, priority, notes, todoParentId, todoParentTitle)
+        display.addTodo(new Todo(values[0],values[1],getCustomDate(values[2]),values[3],values[4],values[5],values[6]));
         success(display.todos[display.todos.length-1].title, display.todos[display.todos.length-1].type);
         
         function getValues(array){
@@ -86,6 +85,10 @@ function sendTodoForm(display){
                 }
                 else if (e.nodeName === 'TEXTAREA'){
                     values.push(e.value);
+                }
+                else if (e.selected){
+                    values.push(Number(e.value));
+                    values.push(getProjectTitle(display, Number(e.value)));
                 }
                 getValues(e);
             })            
@@ -111,3 +114,26 @@ function success(title, type){
     return alerts;
 }
 
+function getProjectTitle(display, id){
+    let title;
+    display.projects.forEach(e =>{
+        if (e.id === id){
+            title = e.title;
+        }
+    })
+    return title;
+}
+
+export function navTabSelected(tab){
+    navTabClearSelected();
+    tab.target.classList.add('active');
+}
+
+function navTabClearSelected(){
+    const navbar = document.getElementsByClassName('nav-link');
+    Array.from(navbar).forEach(e => {
+        if (e.classList.contains('active')){
+            e.classList.remove('active');
+        }
+    })
+}

@@ -6,7 +6,7 @@ export default class Todo {
         return Todo.id++;
     }
 
-    constructor(title, description, dueDate, priority, notes, project = null){
+    constructor(title, description, dueDate, priority, notes, todoParentId, todoParentTitle){
         Todo.autoincrementId();
         this.id = this.constructor.id,
         this.type = this.constructor.type,
@@ -16,11 +16,12 @@ export default class Todo {
         this.priority = priority,
         this.notes = notes,
         this.checklist = false,
-        this.project = project
+        this.todoParentId = todoParentId,
+        this.todoParentTitle = todoParentTitle
     }
 
     done(){
-        this.checklist = true;
+        this.checklist ? this.checklist = false : this.checklist = true;
     }
 
 }

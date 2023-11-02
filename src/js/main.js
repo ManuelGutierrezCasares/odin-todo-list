@@ -12,7 +12,7 @@ import Todo from './ClassTodo';
 import { getCustomDate } from './date';
 
 // Import DOM Processor
-import './DOMProcessor';
+import './DOMNavProcessor';
 import { reloadAll } from './DOMHelpers';
 
 import Display from './ClassDisplay';

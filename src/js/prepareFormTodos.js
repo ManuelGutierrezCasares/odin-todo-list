@@ -1,4 +1,4 @@
-import { prepareFormContainer, prepareFormH1, prepareFormTitle, prepareFormDueDate, prepareFormDescription, prepareFormNote, prepareFormPriority , prepareFormButton } from './prepareFormHelpers';
+import { prepareFormContainer, prepareFormH1, prepareFormTitle, prepareFormDueDate, prepareFormDescription, prepareFormNote, prepareFormPriority, prepareFormTodoParent, prepareFormButton } from './prepareFormHelpers';
 
 export function createTodoForm(){
     const content = document.getElementById('content');
@@ -10,6 +10,7 @@ export function createTodoForm(){
     const description = prepareFormDescription();
     const priority = prepareFormPriority();
     const notes = prepareFormNote();
+    const todoParent = prepareFormTodoParent();
     const btn = prepareFormButton();
   
     
@@ -19,6 +20,7 @@ export function createTodoForm(){
     form.appendChild(dueDate);
     form.appendChild(priority);
     form.appendChild(notes);
+    form.appendChild(todoParent);
     form.appendChild(btn);
     
     content.appendChild(form);

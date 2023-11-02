@@ -17,7 +17,7 @@ export default class Project {
     }
 
     done(){
-        this.checklist = true;
+        this.checklist ? this.checklist = false : this.checklist = true;
     }
 
 }
