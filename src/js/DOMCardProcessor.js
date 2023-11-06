@@ -1,6 +1,7 @@
 import { reloadProjects, reloadTodos, reloadAll } from './DOMHelpers';
 import { display } from './main';
 
+
 export function cardAllListener(){
     const cardLabel = document.getElementsByClassName('form-check-label');
     const cardInput = document.getElementsByClassName('form-check-input');
