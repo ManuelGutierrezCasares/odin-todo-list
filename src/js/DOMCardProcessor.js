@@ -8,6 +8,7 @@ export function cardAllListener(){
     const cardDeletion = document.getElementsByClassName('btn-danger');
     reloadAll(display);
 
+    // Labels
     Array.from(cardLabel).forEach(e => {
         e.addEventListener('click', function (e){
             const type = getType(e.target.htmlFor);
@@ -26,6 +27,7 @@ export function cardAllListener(){
         })
     })
 
+    // Input
     Array.from(cardInput).forEach(e => {
         e.addEventListener('click', function (e){
             const type = getType(e.target.id);
@@ -34,6 +36,11 @@ export function cardAllListener(){
             //change checklist
             if (type === 'project'){
                 const projectIndex = getDisplayProjectIndex(id);
+                console.log(`Project index: ${projectIndex}`);
+                console.log(`display.projects[projectIndex]: ${display.projects[projectIndex].done}`);
+                console.log(`display.projects[2].done: ${display.projects[2].done}`);
+                console.log(`display.projects: ${display.projects}`);
+                console.log(`display: ${display}`);
                 display.projects[projectIndex].done();
             }
             else{
@@ -122,7 +129,7 @@ export function cardTodoListener(){
 function getDisplayProjectIndex(projectId){
     let i;
     display.projects.forEach(function (value, index) {
-        if (value.id.toString() === projectId){
+        if (value.id.toString() == projectId){
             i = index;
         }
     })
@@ -132,7 +139,7 @@ function getDisplayProjectIndex(projectId){
 function getDisplayTodoIndex(todoId){
     let i;
     display.todos.forEach(function (value, index) {
-        if (value.id.toString() === todoId){
+        if (value.id.toString() == todoId){
             i = index;
         }
     })
