@@ -15,6 +15,9 @@ import { getCustomDate } from './date';
 import './DOMNavProcessor';
 import { reloadAll } from './DOMHelpers';
 
+import { initializeLocalStorage } from './storage';
+import { cardAllListener } from './DOMCardProcessor';
+
 import Display from './ClassDisplay';
 
 // const project1 = new Project('Título de Project', 'Esta es la decripción del project', getToday());
@@ -38,10 +41,18 @@ export const display = new Display();
 //display.addProject(project2);
 // display.addTodo(todo1);
 // display.addTodo(todo2);
+initializeLocalStorage(display);
 
 //display.deleteProject(project1);
 //display.deleteTodo(todo1)
 
-console.log(display);
+//console.log(Project);
+//console.log(display);
 
-reloadAll(display);
+if (display.projects.length === 0  && display.todos.length === 0){
+    reloadAll(display);
+}else{
+    cardAllListener();
+}
+
+

@@ -4,6 +4,8 @@ import { display } from './main';
 export function cardAllListener(){
     const cardLabel = document.getElementsByClassName('form-check-label');
     const cardInput = document.getElementsByClassName('form-check-input');
+    //deleteTask
+    const cardDeletion = document.getElementsByClassName('btn-danger');
     reloadAll(display);
 
     Array.from(cardLabel).forEach(e => {
@@ -41,6 +43,16 @@ export function cardAllListener(){
             cardAllListener();
         })   
     })
+
+    //delete todo
+    Array.from(cardDeletion).forEach(e => {
+        e.addEventListener('click', function (e){
+            const id = getId(e.target.id);
+            display.deleteTodo(id);
+
+            cardAllListener();
+        })
+    })
 }
 
 export function cardProjectListener(){
@@ -72,6 +84,8 @@ export function cardProjectListener(){
 export function cardTodoListener(){
     const cardLabel = document.getElementsByClassName('form-check-label');
     const cardInput = document.getElementsByClassName('form-check-input');
+    //deleteTask
+    const cardDeletion = document.getElementsByClassName('btn-danger');
     reloadTodos(display);
 
     Array.from(cardLabel).forEach(e => {
@@ -92,6 +106,16 @@ export function cardTodoListener(){
             display.todos[todoIndex].done();
             cardTodoListener();
         })   
+    })
+
+    //delete todo
+    Array.from(cardDeletion).forEach(e => {
+        e.addEventListener('click', function (e){
+            const id = getId(e.target.id);
+            display.deleteTodo(id);
+
+            cardTodoListener();
+        })
     })
 }
 
@@ -122,5 +146,5 @@ function getType(eTargetType){
 
 function getId(eTargetId){
     const id = eTargetId.split('-');
-    return id[2];
+    return Number(id[2]);
 }

@@ -2,8 +2,9 @@ export default class Project {
     static id = 0;
     static type = 'project';
 
-    static autoincrementId(){
-        return Project.id++;
+    static autoincrementId(number = 1){
+        Project.id = Project.id + number;
+        return Project.id;
     }
 
     constructor(title, description, dueDate){

@@ -62,6 +62,17 @@ export function prepareChecklist(obj){
     return checklistDiv;
 }
 
+export function prepareDeleteBtnTodo(obj){
+    const btn = document.createElement('button');
+
+    btn.classList.add('btn', 'btn-danger');
+    btn.type = 'button';
+    btn.innerText = 'Delete';
+    btn.id = `delete-todo-${obj.id}`;
+
+    return btn;
+} 
+
 function reviewChecklist(obj){
     if (obj.checklist){
         return "Done";

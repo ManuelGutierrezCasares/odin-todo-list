@@ -5,22 +5,26 @@ import { createProjectCard } from './prepareCardProjects';
 import { createTodoForm } from './prepareFormTodos';
 import { createProjectForm } from './prepareFormProjects';
 import { getCustomDate } from './date';
+import { updateProjectsInLocalStorage, updateTodosInLocalStorage, updateLocalStorage } from './storage';
 
 
 export function reloadTodos(display){
     clearAll();
     display.todos.map(e => createTodoCard(e));
+    updateLocalStorage();
 }
 
 export function reloadProjects(display){
     clearAll();
     display.projects.map(e => createProjectCard(e));
+    updateLocalStorage();
 }
 
 export function reloadAll(display){
     clearAll();
     display.projects.map(e => createProjectCard(e));
     display.todos.map(e => createTodoCard(e));
+    updateLocalStorage();
 }
 
 export function reloadProjectForm(display){
@@ -31,7 +35,19 @@ export function reloadProjectForm(display){
     submitForm.addEventListener('click', function(e){
         e.preventDefault();
         sendProjectForm(display);
-    }) 
+        updateProjectsInLocalStorage()
+    })
+}
+export function reloadTodoForm(display){
+    clearAll();
+    createTodoForm();
+    const submitForm = document.getElementById('submit');
+
+    submitForm.addEventListener('click', function(e){
+        e.preventDefault();
+        sendTodoForm(display);
+        updateTodosInLocalStorage();
+    })
 }
 
 function sendProjectForm(display){
@@ -54,16 +70,6 @@ function sendProjectForm(display){
         };
 }
 
-export function reloadTodoForm(display){
-    clearAll();
-    createTodoForm();
-    const submitForm = document.getElementById('submit');
-
-    submitForm.addEventListener('click', function(e){
-        e.preventDefault();
-        sendTodoForm(display);
-    })
-}
 
 function sendTodoForm(display){
     const form = document.getElementsByTagName('form');

@@ -2,8 +2,9 @@ export default class Todo {
     static id = 0;
     static type = 'todo';
 
-    static autoincrementId(){
-        return Todo.id++;
+    static autoincrementId(number = 1){
+        Todo.id = Todo.id + number;
+        return Todo.id;
     }
 
     constructor(title, description, dueDate, priority, notes, todoParentId, todoParentTitle){
