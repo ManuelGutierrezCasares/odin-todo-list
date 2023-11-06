@@ -12,7 +12,6 @@ const addTodo = document.getElementById('nav-add-todo');
 
 
 showHome.addEventListener('click', e => {
-    console.log(display);
     navTabSelected(e);
     reloadAll(display);
     cardAllListener();

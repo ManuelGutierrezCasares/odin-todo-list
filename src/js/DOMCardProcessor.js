@@ -36,11 +36,6 @@ export function cardAllListener(){
             //change checklist
             if (type === 'project'){
                 const projectIndex = getDisplayProjectIndex(id);
-                console.log(`Project index: ${projectIndex}`);
-                console.log(`display.projects[projectIndex]: ${display.projects[projectIndex].done}`);
-                console.log(`display.projects[2].done: ${display.projects[2].done}`);
-                console.log(`display.projects: ${display.projects}`);
-                console.log(`display: ${display}`);
                 display.projects[projectIndex].done();
             }
             else{
