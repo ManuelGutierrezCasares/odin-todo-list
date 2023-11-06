@@ -19,7 +19,7 @@ export function updateLocalStorage(){
 
 export function initializeLocalStorage(display){
     // > 2 because '[]' is the value that localStorage keeps
-    if (localStorage.getItem('projects').length > 2){
+    if (localStorage.getItem('projects') !== null && localStorage.getItem('projects').length > 2){
         display.projects = JSON.parse(localStorage.getItem('projects'));
         console.log(localStorage.getItem('projects'))
         console.log(display.projects)
@@ -27,7 +27,7 @@ export function initializeLocalStorage(display){
         //Project.initializeId = display.projects[-1].id;
     }
     
-    if (localStorage.getItem('todos').length > 2){
+    if (localStorage.getItem('todos') !== null && localStorage.getItem('todos').length > 2){
         display. todos = JSON.parse(localStorage.getItem('todos'));
         Todo.autoincrementId(display.todos[display.todos.length-1].id);
         //Todo.id = display.todos[-1].id;
