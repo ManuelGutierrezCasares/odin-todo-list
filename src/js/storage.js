@@ -20,7 +20,6 @@ export function updateLocalStorage(){
 export function initializeLocalStorage(display){
     if (localStorage.getItem('projects')){
         display.projects = JSON.parse(localStorage.getItem('projects'));
-        console.log(display.projects[display.projects.length-1].id);
         Project.autoincrementId(display.projects[display.projects.length-1].id);
         
         //Project.initializeId = display.projects[-1].id;
