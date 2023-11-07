@@ -22,17 +22,13 @@ export function initializeLocalStorage(display){
     if (localStorage.getItem('projects') !== null && localStorage.getItem('projects').length > 2){
         display.projects = JSON.parse(localStorage.getItem('projects'));
         addMethodsDisplayProjects();
-        console.log(localStorage.getItem('projects'))
-        console.log(display.projects)
         Project.autoincrementId(display.projects[display.projects.length-1].id);
-        //Project.initializeId = display.projects[-1].id;
     }
     
     if (localStorage.getItem('todos') !== null && localStorage.getItem('todos').length > 2){
         display. todos = JSON.parse(localStorage.getItem('todos'));
         addMethodsDisplayTodos();
         Todo.autoincrementId(display.todos[display.todos.length-1].id);
-        //Todo.id = display.todos[-1].id;
     }
 }
 

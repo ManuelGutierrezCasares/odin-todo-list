@@ -8,6 +8,7 @@ You can:
 - Assign a Todo to a Project.
 - Mark as complete a Project.
 - Mark as complete a Todo.
+- Delete a Todo.
 
 All dates are displayed as EU format (dd-mm-yyyy).
 
