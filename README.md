@@ -21,6 +21,7 @@ Project Technologies:
 - Webpack
 - date-fns
 - Web Storage API (localstorage)
+- ESLint (Standard Style w/ semicolons)
 
 Requirements:
 - Internet browser with JavaScript Engine.

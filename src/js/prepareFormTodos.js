@@ -1,29 +1,28 @@
 import { prepareFormContainer, prepareFormH1, prepareFormTitle, prepareFormDueDate, prepareFormDescription, prepareFormNote, prepareFormPriority, prepareFormTodoParent, prepareFormButton } from './prepareFormHelpers';
 
-export function createTodoForm(){
-    const content = document.getElementById('content');
-    
-    const form = prepareFormContainer();
-    const h1 = prepareFormH1();
-    const title = prepareFormTitle();
-    const dueDate = prepareFormDueDate();
-    const description = prepareFormDescription();
-    const priority = prepareFormPriority();
-    const notes = prepareFormNote();
-    const todoParent = prepareFormTodoParent();
-    const btn = prepareFormButton();
-  
-    
-    form.appendChild(h1);
-    form.appendChild(title);
-    form.appendChild(description);
-    form.appendChild(dueDate);
-    form.appendChild(priority);
-    form.appendChild(notes);
-    form.appendChild(todoParent);
-    form.appendChild(btn);
-    
-    content.appendChild(form);
+export function createTodoForm () {
+  const content = document.getElementById('content');
 
-    return content;
+  const form = prepareFormContainer();
+  const h1 = prepareFormH1();
+  const title = prepareFormTitle();
+  const dueDate = prepareFormDueDate();
+  const description = prepareFormDescription();
+  const priority = prepareFormPriority();
+  const notes = prepareFormNote();
+  const todoParent = prepareFormTodoParent();
+  const btn = prepareFormButton();
+
+  form.appendChild(h1);
+  form.appendChild(title);
+  form.appendChild(description);
+  form.appendChild(dueDate);
+  form.appendChild(priority);
+  form.appendChild(notes);
+  form.appendChild(todoParent);
+  form.appendChild(btn);
+
+  content.appendChild(form);
+
+  return content;
 }

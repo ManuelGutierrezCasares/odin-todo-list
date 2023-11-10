@@ -2,14 +2,10 @@
 import '../scss/styles.scss';
 
 // Import all of Bootstrap's JS
-import * as bootstrap from 'bootstrap';
 
 // Import my classes
-import Project from './ClassProject';
-import Todo from './ClassTodo';
 
 // Import my Date
-import { getCustomDate } from './date';
 
 // Import DOM Processor
 import './DOMNavProcessor';
@@ -24,10 +20,8 @@ export const display = new Display();
 
 initializeLocalStorage(display);
 
-if (display.projects.length === 0  && display.todos.length === 0){
-    reloadAll(display);
-}else{
-    cardAllListener();
+if (display.projects.length === 0 && display.todos.length === 0) {
+  reloadAll(display);
+} else {
+  cardAllListener();
 }
-
-

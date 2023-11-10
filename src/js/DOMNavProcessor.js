@@ -1,40 +1,37 @@
-
 import { display } from './main';
 import { reloadTodos, reloadProjects, reloadAll, reloadTodoForm, reloadProjectForm, navTabSelected } from './DOMHelpers';
 import { cardAllListener, cardProjectListener, cardTodoListener } from './DOMCardProcessor';
 
-
-const showHome = document.getElementById('nav-home')
+const showHome = document.getElementById('nav-home');
 const showProjects = document.getElementById('nav-projects');
 const showTodos = document.getElementById('nav-todos');
 const addProject = document.getElementById('nav-add-project');
 const addTodo = document.getElementById('nav-add-todo');
 
-
 showHome.addEventListener('click', e => {
-    navTabSelected(e);
-    reloadAll(display);
-    cardAllListener();
-})
+  navTabSelected(e);
+  reloadAll(display);
+  cardAllListener();
+});
 
-showProjects.addEventListener('click', function (e){
-    navTabSelected(e);
-    reloadProjects(display);
-    cardProjectListener();
-})
+showProjects.addEventListener('click', function (e) {
+  navTabSelected(e);
+  reloadProjects(display);
+  cardProjectListener();
+});
 
-showTodos.addEventListener('click', function (e){
-    navTabSelected(e);
-    reloadTodos(display);
-    cardTodoListener();
-})
+showTodos.addEventListener('click', function (e) {
+  navTabSelected(e);
+  reloadTodos(display);
+  cardTodoListener();
+});
 
-addProject.addEventListener('click', function (e){
-    navTabSelected(e);
-    return reloadProjectForm(display);
-})
+addProject.addEventListener('click', function (e) {
+  navTabSelected(e);
+  return reloadProjectForm(display);
+});
 
-addTodo.addEventListener('click', function (e){
-    navTabSelected(e);
-    return reloadTodoForm(display);
-})
+addTodo.addEventListener('click', function (e) {
+  navTabSelected(e);
+  return reloadTodoForm(display);
+});
