@@ -13,12 +13,14 @@ function prepareFormDiv () {
   return div;
 }
 
-export function prepareFormH1 () {
-  const h1Div = prepareFormDiv();
-  const h1Text = document.createElement('h1');
+export function prepareFormH3 (type) {
+  const h3Div = prepareFormDiv();
+  const h3Text = document.createElement('h3');
 
-  h1Div.appendChild(h1Text);
-  return h1Div;
+  h3Text.innerText = `Please complete the form and submit your ${type}`;
+
+  h3Div.appendChild(h3Text);
+  return h3Div;
 }
 
 export function prepareFormTitle () {
@@ -33,6 +35,11 @@ export function prepareFormTitle () {
   titleText.classList.add('form-control');
   titleText.type = 'text';
   titleText.id = 'title';
+
+  // Validation
+  titleText.required = true;
+  titleText.minLength = 3;
+  titleText.maxLength = 30;
 
   titleDiv.appendChild(titleLabel);
   titleDiv.appendChild(titleText);
@@ -53,6 +60,9 @@ export function prepareFormDueDate () {
   dueDateText.type = 'date';
   dueDateText.id = 'dueDate';
 
+  // Validation
+  dueDateText.required = true;
+
   dueDateDiv.appendChild(dueDateLabel);
   dueDateDiv.appendChild(dueDateText);
 
@@ -71,6 +81,11 @@ export function prepareFormDescription () {
   descriptionText.classList.add('form-control');
   descriptionText.type = 'text';
   descriptionText.id = 'description';
+
+  // Validation
+  descriptionText.required = true;
+  descriptionText.minLength = 3;
+  descriptionText.maxLength = 60;
 
   descriptionDiv.appendChild(descriptionLabel);
   descriptionDiv.appendChild(descriptionText);
@@ -105,7 +120,6 @@ export function prepareFormPriority () {
   btnradio1.name = 'btnradio';
   btnradio1.id = 'high';
   btnradio1.autocomplete = 'off';
-  btnradio1.checked = true;
 
   labelradio1.classList.add('btn', 'btn-outline-primary');
   labelradio1.htmlFor = 'high';
@@ -116,6 +130,7 @@ export function prepareFormPriority () {
   btnradio2.name = 'btnradio';
   btnradio2.id = 'medium';
   btnradio2.autocomplete = 'off';
+  btnradio2.checked = true;
 
   labelradio2.classList.add('btn', 'btn-outline-primary');
   labelradio2.htmlFor = 'medium';
@@ -152,7 +167,7 @@ export function prepareFormNote () {
 
   noteText.classList.add('form-control');
   noteText.id = 'note';
-  noteText.placeholder = 'Leave your notes here';
+  noteText.placeholder = 'Leave your notes here...';
 
   noteDiv.appendChild(noteLabel);
   noteDiv.appendChild(noteText);
@@ -168,6 +183,7 @@ export function prepareFormTodoParent () {
 
   todoParentSelect.classList.add('form-select');
   todoParentSelect.ariaLabel = 'Default select example';
+  todoParentSelect.required = true;
 
   todoParentDiv.appendChild(createTodoParentSelect(todoParentSelect));
 
@@ -176,10 +192,18 @@ export function prepareFormTodoParent () {
 
 function createTodoParentSelect (todoParentSelect) {
   const optionDefault = document.createElement('option');
+  const optionNull = document.createElement('option');
+
   optionDefault.selected = true;
   optionDefault.disabled = true;
-  optionDefault.innerText = 'Related to parent...';
+  optionDefault.value = undefined;
+  optionDefault.innerText = 'Which Project to relate...';
+
+  optionNull.value = null;
+  optionNull.innerText = 'None';
+
   todoParentSelect.appendChild(optionDefault);
+  todoParentSelect.appendChild(optionNull);
 
   display.projects.forEach(e => {
     const option = document.createElement('option');

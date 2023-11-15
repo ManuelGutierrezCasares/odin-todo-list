@@ -22,11 +22,14 @@ Project Technologies:
 - date-fns
 - Web Storage API (localstorage)
 - ESLint (Standard Style w/ semicolons)
+- Javascript Validation API
 
 Requirements:
 - Internet browser with JavaScript Engine.
 
+Working ATM:
+- Refactorizing send-form functions 
+
 In development:
 - Show a specific project with it's own Todos
-- Client and Server validations
 - Aesthetics in general (UI)

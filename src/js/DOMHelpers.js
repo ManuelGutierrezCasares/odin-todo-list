@@ -6,6 +6,8 @@ import { createTodoForm } from './prepareFormTodos';
 import { createProjectForm } from './prepareFormProjects';
 import { getCustomDate } from './date';
 import { updateProjectsInLocalStorage, updateTodosInLocalStorage, updateLocalStorage } from './storage';
+import { validateTitle, validateDescription, validateDueDate } from './validation/validator';
+import { successProject, successTodo } from './alerts';
 
 export function reloadTodos (display) {
   clearAll();
@@ -29,23 +31,42 @@ export function reloadAll (display) {
 export function reloadProjectForm (display) {
   clearAll();
   createProjectForm();
+
+  // Validation on first load Project Form
+  validateTitle();
+  validateDescription();
+  validateDueDate();
   const submitForm = document.getElementById('submit');
 
   submitForm.addEventListener('click', function (e) {
-    e.preventDefault();
-    sendProjectForm(display);
-    updateProjectsInLocalStorage();
+    // Check if every validation pass to submit
+    if (validateTitle() && validateDescription() && validateDueDate()) {
+      e.preventDefault();
+      sendProjectForm(display);
+      updateProjectsInLocalStorage();
+      reloadProjectForm(display);
+      successProject(display);
+    }
   });
 }
 export function reloadTodoForm (display) {
   clearAll();
   createTodoForm();
+
+  // Validation on first load Project Form
+  validateTitle();
+  validateDescription();
+  validateDueDate();
   const submitForm = document.getElementById('submit');
 
   submitForm.addEventListener('click', function (e) {
-    e.preventDefault();
-    sendTodoForm(display);
-    updateTodosInLocalStorage();
+    if (validateTitle() && validateDescription() && validateDueDate()) {
+      e.preventDefault();
+      sendTodoForm(display);
+      updateTodosInLocalStorage();
+      reloadTodoForm(display);
+      successTodo(display);
+    }
   });
 }
 
@@ -57,7 +78,6 @@ function sendProjectForm (display) {
   getValues(form);
   // Project (title, description, dueDate)
   display.addProject(new Project(values[0], values[1], getCustomDate(values[2])));
-  success(display.projects[display.projects.length - 1].title, display.projects[display.projects.length - 1].type);
 
   function getValues (array) {
     Array.from(array).forEach(function (e) {
@@ -77,7 +97,6 @@ function sendTodoForm (display) {
   getValues(form);
   // Todo(title, description, dueDate, priority, notes, todoParentId, todoParentTitle)
   display.addTodo(new Todo(values[0], values[1], getCustomDate(values[2]), values[3], values[4], values[5], values[6]));
-  success(display.todos[display.todos.length - 1].title, display.todos[display.todos.length - 1].type);
 
   function getValues (array) {
     Array.from(array).forEach(function (e) {
@@ -101,18 +120,6 @@ function clearAll () {
   const alerts = document.getElementById('alerts');
   content.replaceChildren();
   alerts.replaceChildren();
-}
-
-function success (title, type) {
-  const alerts = document.getElementById('alerts');
-  const div = document.createElement('div');
-
-  div.role = 'alert';
-  div.classList.add('alert', 'alert-success');
-  type === 'project' ? div.innerText = `The "${title}" Project has been created.` : div.innerText = `The "${title}" Todo has been created.`;
-
-  alerts.appendChild(div);
-  return alerts;
 }
 
 function getProjectTitle (display, id) {

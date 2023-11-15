@@ -28,10 +28,10 @@ showTodos.addEventListener('click', function (e) {
 
 addProject.addEventListener('click', function (e) {
   navTabSelected(e);
-  return reloadProjectForm(display);
+  reloadProjectForm(display);
 });
 
 addTodo.addEventListener('click', function (e) {
   navTabSelected(e);
-  return reloadTodoForm(display);
+  reloadTodoForm(display);
 });

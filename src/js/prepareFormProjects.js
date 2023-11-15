@@ -1,16 +1,16 @@
-import { prepareFormContainer, prepareFormH1, prepareFormTitle, prepareFormDueDate, prepareFormDescription, prepareFormButton } from './prepareFormHelpers';
+import { prepareFormContainer, prepareFormH3, prepareFormTitle, prepareFormDueDate, prepareFormDescription, prepareFormButton } from './prepareFormHelpers';
 
 export function createProjectForm () {
   const content = document.getElementById('content');
 
   const form = prepareFormContainer();
-  const h1 = prepareFormH1();
+  const h3 = prepareFormH3('Project');
   const title = prepareFormTitle();
   const dueDate = prepareFormDueDate();
   const description = prepareFormDescription();
   const btn = prepareFormButton();
 
-  form.appendChild(h1);
+  form.appendChild(h3);
   form.appendChild(title);
   form.appendChild(description);
   form.appendChild(dueDate);

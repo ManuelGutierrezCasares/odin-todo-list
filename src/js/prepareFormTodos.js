@@ -1,10 +1,10 @@
-import { prepareFormContainer, prepareFormH1, prepareFormTitle, prepareFormDueDate, prepareFormDescription, prepareFormNote, prepareFormPriority, prepareFormTodoParent, prepareFormButton } from './prepareFormHelpers';
+import { prepareFormContainer, prepareFormH3, prepareFormTitle, prepareFormDueDate, prepareFormDescription, prepareFormNote, prepareFormPriority, prepareFormTodoParent, prepareFormButton } from './prepareFormHelpers';
 
 export function createTodoForm () {
   const content = document.getElementById('content');
 
   const form = prepareFormContainer();
-  const h1 = prepareFormH1();
+  const h3 = prepareFormH3('Todo');
   const title = prepareFormTitle();
   const dueDate = prepareFormDueDate();
   const description = prepareFormDescription();
@@ -13,7 +13,7 @@ export function createTodoForm () {
   const todoParent = prepareFormTodoParent();
   const btn = prepareFormButton();
 
-  form.appendChild(h1);
+  form.appendChild(h3);
   form.appendChild(title);
   form.appendChild(description);
   form.appendChild(dueDate);
