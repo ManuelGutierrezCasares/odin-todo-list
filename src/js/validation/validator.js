@@ -1,9 +1,3 @@
-function projectFormValidator () {
-  validateTitle();
-  validateDescription();
-  validateDueDate();
-}
-
 // Client side validations with Validation API
 export function validateTitle () {
   const title = document.getElementById('title');
